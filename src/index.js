@@ -5,9 +5,12 @@ import App from './app/App';
 import * as serviceWorker from './serviceWorker';
 import { BrowserRouter, Switch, Route } from 'react-router-dom';
 import Auth from "./app/components/Auth";
-import RepositoriesList from "./app/containers/Repositories";
+import RepositoriesList from "./app/containers/RepositoriesList";
 import {Provider} from "react-redux";
-import store from './app/store'
+import {createStore} from "redux";
+import rootReducer from "./app/reducers";
+
+const store = createStore(rootReducer);
 
 ReactDOM.render((
     <Provider store={store}>

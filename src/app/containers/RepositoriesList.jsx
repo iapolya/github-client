@@ -18,5 +18,5 @@ function RepositoriesList(props) {
 }
 
 export default connect(state => ({
-    users: state.users
+    users: state.auth
 }))(RepositoriesList)

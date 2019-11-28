@@ -1,10 +1,7 @@
 import React from "react";
 import { connect } from 'react-redux';
 
-function RepositoriesList(props) {
-    console.log(props);
-    const { reposList } = props;
-
+function RepositoriesList({reposList}) {
     return (
         <div>
             {reposList.map((repo) =>
@@ -17,6 +14,8 @@ function RepositoriesList(props) {
     )
 }
 
-export default connect(state => ({
-    users: state.auth
-}))(RepositoriesList)
+const mapStateToProps = state => {
+    return { reposList: state.auth };
+};
+export default connect(mapStateToProps
+)(RepositoriesList);

@@ -7,10 +7,7 @@ import { BrowserRouter, Switch, Route } from 'react-router-dom';
 import Auth from "./app/components/Auth";
 import RepositoriesList from "./app/containers/RepositoriesList";
 import {Provider} from "react-redux";
-import {createStore} from "redux";
-import rootReducer from "./app/reducers";
-
-const store = createStore(rootReducer);
+import store from './app/store';
 
 ReactDOM.render((
     <Provider store={store}>

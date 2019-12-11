@@ -13,6 +13,25 @@ import {Provider} from "react-redux";
 import store from './app/store';
 import Login from "./app/containers/Login";
 import Search from "./app/containers/Search";
+import Profile from "./app/containers/Profile";
+
+const cache = new InMemoryCache();
+
+const GITHUB_BASE_URL = 'https://api.github.com/graphql';
+
+const httpLink = new HttpLink({
+    uri: GITHUB_BASE_URL,
+    headers: {
+        authorization: `Bearer ${
+            localStorage.getItem('token')
+            }`,
+    },
+});
+
+const client = new ApolloClient({
+    link: httpLink,
+    cache,
+});
 
 ReactDOM.render((
     <Provider store={store}>
@@ -20,8 +39,9 @@ ReactDOM.render((
             <BrowserRouter>
                 <App>
                     <Switch>
-                        <Route exact path='/' component={Login}/>
+                        <Route exact path='/login' component={Login}/>
                         <Route path='/repositories' component={RepositoriesList} />
+                        <Route path='/profile' component={Profile} />
                         <Route path='/search' component={Search} />
                     </Switch>
                 </App>

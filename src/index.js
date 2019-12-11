@@ -4,6 +4,10 @@ import './index.css';
 import App from './app/App';
 import * as serviceWorker from './serviceWorker';
 import { BrowserRouter, Switch, Route } from 'react-router-dom';
+import {ApolloProvider} from 'react-apollo';
+import {ApolloClient} from 'apollo-client';
+import {HttpLink} from 'apollo-link-http';
+import {InMemoryCache} from 'apollo-cache-inmemory';
 import RepositoriesList from "./app/containers/RepositoriesList";
 import {Provider} from "react-redux";
 import store from './app/store';
@@ -12,15 +16,17 @@ import Search from "./app/containers/Search";
 
 ReactDOM.render((
     <Provider store={store}>
-        <BrowserRouter>
-            <App>
-                <Switch>
-                    <Route exact path='/' component={Login}/>
-                    <Route path='/repositories' component={RepositoriesList} />
-                    <Route path='/search' component={Search} />
-                </Switch>
-            </App>
-        </BrowserRouter>
+        <ApolloProvider client={client}>
+            <BrowserRouter>
+                <App>
+                    <Switch>
+                        <Route exact path='/' component={Login}/>
+                        <Route path='/repositories' component={RepositoriesList} />
+                        <Route path='/search' component={Search} />
+                    </Switch>
+                </App>
+            </BrowserRouter>
+        </ApolloProvider>
     </Provider>
 ), document.getElementById('root'));
 

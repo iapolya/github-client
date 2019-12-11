@@ -6,7 +6,7 @@ import {Redirect} from "react-router-dom";
 
 function Login() {
     let [githubToken, setGithubToken] = useState('');
-    let [token, setToken] = useState(localStorage.getItem('token'));
+    let [token] = useState(localStorage.getItem('token'));
 
     return token ? (
         <Redirect to='/search' />

@@ -8,6 +8,7 @@ import RepositoriesList from "./app/containers/RepositoriesList";
 import {Provider} from "react-redux";
 import store from './app/store';
 import Login from "./app/containers/Login";
+import Search from "./app/containers/Search";
 
 ReactDOM.render((
     <Provider store={store}>
@@ -16,6 +17,7 @@ ReactDOM.render((
                 <Switch>
                     <Route exact path='/' component={Login}/>
                     <Route path='/repositories' component={RepositoriesList} />
+                    <Route path='/search' component={Search} />
                 </Switch>
             </App>
         </BrowserRouter>

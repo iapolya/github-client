@@ -4,12 +4,14 @@ import 'antd/dist/antd.css';
 
 function App({ children }) {
   return (
-    <div>
-      <div>header</div>
+    <div style={Layout}>
         {children}
-      <div>footer</div>
     </div>
   );
 }
 
 export default App;
+
+const Layout = {
+    margin: '50px'
+};

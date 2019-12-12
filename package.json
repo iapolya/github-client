@@ -2,6 +2,10 @@
   "name": "github-client",
   "version": "0.1.0",
   "private": true,
+  "engines": {
+    "npm": "6.12.1",
+    "node": "12.13.1"
+  },
   "dependencies": {
     "antd": "^3.25.3",
     "apollo-boost": "^0.4.4",

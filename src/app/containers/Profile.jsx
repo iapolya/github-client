@@ -25,6 +25,9 @@ query UserProfile($login:String!){
           stargazers {
             totalCount
           }
+          owner {
+            login
+          }
           viewerHasStarred
           isPrivate
         }
@@ -34,7 +37,7 @@ query UserProfile($login:String!){
 }
 `;
 
-function Profile(props) {
+function Profile() {
     let {login} = useParams();
 
     return (

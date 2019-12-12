@@ -12,7 +12,7 @@ const Repositories = ({repositories, login}) => (
                 return (
                     <Card key={node.id}>
                         <Icon type={node.isPrivate ? 'lock' : 'unlock'} theme="twoTone" />
-                        <Link to={`/repository/${login}/${node.name}`}>
+                        <Link to={`/repository/${node.owner.login}/${node.name}`}>
                             <span className="repository-name">{node.name}</span>
                         </Link>
                         <Star id={node.id} hasStarred={node.viewerHasStarred} />

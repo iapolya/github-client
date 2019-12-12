@@ -8,12 +8,12 @@ import {ApolloProvider} from 'react-apollo';
 import {ApolloClient} from 'apollo-client';
 import {HttpLink} from 'apollo-link-http';
 import {InMemoryCache} from 'apollo-cache-inmemory';
-import RepositoriesList from "./app/containers/RepositoriesList";
 import {Provider} from "react-redux";
 import store from './app/store';
 import Login from "./app/containers/Login";
 import Search from "./app/containers/Search";
 import Profile from "./app/containers/Profile";
+import Repository from "./app/containers/Repository";
 
 const cache = new InMemoryCache();
 
@@ -40,7 +40,7 @@ ReactDOM.render((
                 <App>
                     <Switch>
                         <Route exact path='/login' component={Login}/>
-                        <Route path='/repositories' component={RepositoriesList} />
+                        <Route path='/repository/:login/:name' component={Repository} />
                         <Route path='/profile/:login' component={Profile} />
                         <Route path='/search' component={Search} />
                     </Switch>

@@ -6,8 +6,6 @@ function ShortUserInfo({ user }) {
             <img className="round-img" src={user.avatarUrl} alt="avatar" />
             <h2>{user.name}</h2>
             <p>{user.login}</p>
-            <p>{user.email}</p>
-            <p>{user.bio}</p>
         </div>
     )
 }

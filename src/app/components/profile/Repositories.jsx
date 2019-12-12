@@ -4,7 +4,7 @@ import {Card, Icon} from "antd";
 import {Link} from "react-router-dom";
 import Star from "../repositories/Star";
 
-const Repositories = ({repositories, login}) => (
+const Repositories = ({repositories}) => (
     <div className="repositories">
         <h2>Repositories</h2>
         {repositories.edges.map(({node}) => {

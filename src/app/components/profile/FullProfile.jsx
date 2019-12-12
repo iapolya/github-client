@@ -19,7 +19,7 @@ function FullProfile(props) {
             </Row>
             <Row type="flex" justify="center">
                 <Col align="center" span={20}>
-                    <Repositories repositories={data.repositories} login={data.login} />
+                    <Repositories repositories={data.repositories} />
                 </Col>
             </Row>
         </div>

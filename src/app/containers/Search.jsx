@@ -2,6 +2,7 @@ import React, {useState} from "react";
 import {Button, Input, Select} from "antd";
 import "./styles.scss";
 import UserSearchResult from "../components/search/UserSearch";
+import RepositorySearch from "../components/search/RepositorySearch";
 
 const {Option} = Select;
 
@@ -27,8 +28,10 @@ function Search() {
                     <Button type="dashed" shape="circle" icon="search" onClick={() => setSearchState(true)} />
                 </div>
             </div>
-            {isSearch &&
-                <UserSearchResult login={searchTerm} />
+            {
+                searchType === 'repository' ?
+                (<RepositorySearch query={searchTerm} />):
+                (<UserSearchResult login={searchTerm} />)
             }
         </div>
     )

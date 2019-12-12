@@ -2,9 +2,10 @@ import gql from "graphql-tag";
 import React from "react";
 import {Query} from 'react-apollo';
 import FullProfile from "../components/profile/FullProfile";
+import {useParams} from "react-router-dom";
 
-const reposQuery = gql`
-query Myrepositories($first:Int!){
+const myProfileQuery = gql`
+query MyProfile($first:Int!){
     viewer {
         id
         isViewer
@@ -31,13 +32,43 @@ query Myrepositories($first:Int!){
 }
 `;
 
-function Profile() {
+const profileQuery = gql`
+query UserProfile($login:String!){
+  user(login: $login) {
+    id
+    isViewer
+    viewerIsFollowing
+    avatarUrl
+    bio
+    email
+    login
+    name
+    repositories(first: 10) {
+      edges {
+        node {
+          id
+          name
+          stargazers {
+            totalCount
+          }
+          viewerHasStarred
+          isPrivate
+        }
+      }
+    }
+  }
+}
+`;
+
+function Profile(props) {
+    let {login} = useParams();
+
     return (
-        <Query query={reposQuery} variables={{first: 10}}>
+        <Query query={profileQuery} variables={{login: login}}>
             {({data, loading}) => {
                 if (loading) return <p>loading...</p>;
                 return (
-                    <FullProfile data={data.viewer}/>)
+                    <FullProfile data={data.user}/>)
             }}
         </Query>
     );

@@ -2,7 +2,7 @@ import React from "react";
 import gql from "graphql-tag";
 import {Query} from 'react-apollo';
 import './search.scss';
-import {Avatar, Card} from "antd";
+import {Avatar, Card, Spin} from "antd";
 import {Link} from "react-router-dom";
 
 const { Meta } = Card;
@@ -20,7 +20,9 @@ const UserSearchResult = ({login}) => (
     <Query query={userSearchQuery} variables={{login}}>
         {
             ({data, loading}) => {
-            return (loading ? <div>Loading ...</div> :
+            return (
+                loading ?
+                <Spin style={{marginTop: 20}} size="large" /> :
                 data ?
                     <Link to={`/profile/${data.user.login}`}>
                         <Card style={{ width: 300, marginTop: 16 }}>
@@ -32,10 +34,8 @@ const UserSearchResult = ({login}) => (
                                 description={data.user.name}
                             />
                         </Card>
-                    </Link>
-                    :
-                    <p>Nothing was found</p>);
-            }
+                    </Link> : <p>Nothing was found</p>
+            );}
         }
     </Query>
 );

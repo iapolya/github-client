@@ -41,7 +41,7 @@ ReactDOM.render((
                     <Switch>
                         <Route exact path='/login' component={Login}/>
                         <Route path='/repositories' component={RepositoriesList} />
-                        <Route path='/profile' component={Profile} />
+                        <Route path='/profile/:login' component={Profile} />
                         <Route path='/search' component={Search} />
                     </Switch>
                 </App>

@@ -2,9 +2,41 @@ import React, {useState} from "react";
 import {Button, Col, Icon, Input, Row} from "antd";
 import github from "../static/images/github.png";
 import "./styles.scss";
+import gql from "graphql-tag";
+import {login as loginAction} from '../actions/actionCreator';
 import {Redirect} from "react-router-dom";
+import {connect} from "react-redux";
 
-function Login() {
+const myProfileQuery = gql`
+query MyProfile($first:Int!){
+    viewer {
+        id
+        isViewer
+        viewerIsFollowing
+        name
+        login
+        avatarUrl
+        bio
+        email   
+        repositories(first: $first) {
+            edges {
+                node {
+                    id
+                    name
+                    stargazers{
+                        totalCount
+                    }
+                    viewerHasStarred
+                    isPrivate
+                }
+            }
+        }
+    }
+}
+`;
+
+
+function Login({dispatch}) {
     let [githubToken, setGithubToken] = useState('');
     let [token] = useState(localStorage.getItem('token'));
 
@@ -37,8 +69,8 @@ function Login() {
 
     function login() {
         localStorage.setItem('token', githubToken);
-        window.location.reload(true);
+        window.location.reload();
     }
 }
 
-export default Login;
+export default (Login);

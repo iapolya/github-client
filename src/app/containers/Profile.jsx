@@ -3,34 +3,7 @@ import React from "react";
 import {Query} from 'react-apollo';
 import FullProfile from "../components/profile/FullProfile";
 import {useParams} from "react-router-dom";
-
-const myProfileQuery = gql`
-query MyProfile($first:Int!){
-    viewer {
-        id
-        isViewer
-        viewerIsFollowing
-        name
-        login
-        avatarUrl
-        bio
-        email   
-        repositories(first: $first) {
-            edges {
-                node {
-                    id
-                    name
-                    stargazers{
-                        totalCount
-                    }
-                    viewerHasStarred
-                    isPrivate
-                }
-            }
-        }
-    }
-}
-`;
+import {connect} from "react-redux";
 
 const profileQuery = gql`
 query UserProfile($login:String!){
@@ -74,4 +47,9 @@ function Profile(props) {
     );
 }
 
-export default Profile;
+export default connect(
+    state => ({
+        user: state.auth.user
+    })
+)
+(Profile);

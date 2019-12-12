@@ -19,8 +19,8 @@ function App({ children }) {
                 }
                 subTitle="simple client"
                 extra={[
-                    <Button key="3" shape="circle" icon="search" />,
-                    <Button key="2" shape="round" icon="user">My profile</Button>,
+                    <Button key="3" onClick={() => history.push('/search')} shape="circle" icon="search" />,
+                    <Button key="2" onClick={() => history.push('/profile')} shape="round" icon="user">My profile</Button>,
                     <Button onClick={logOut} key="1" shape="round" type="primary" icon="logout">
                         Logout
                     </Button>,

@@ -1,29 +1,22 @@
-import {ADD_USER} from "../../constants";
-
-const REPOS = [
-    {
-        id: 1,
+const initialState = {
+    user: {
         login: 'iapolly'
     },
-    {
-        id: 2,
-        login: 'iapolly2'
-    },
-    {
-        id: 3,
-        login: 'iapolly3'
-    }
-];
+    loggedIn: false
+};
 
-const users = (state = REPOS, { id, login, type }) => {
+const users = (state = initialState, { user, type }) => {
     switch (type) {
-        case ADD_USER:
-            return [
-                ...state, {
-                    id: id,
-                    login: login
-                }
-            ];
+        case 'LOGIN':
+            return {
+                user: user,
+                loggedIn: true
+            };
+        case 'LOGOUT':
+            return {
+                user: {},
+                loggedIn: false
+            };
         default:
             return state;
     }

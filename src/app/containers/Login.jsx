@@ -3,9 +3,7 @@ import {Button, Col, Icon, Input, Row} from "antd";
 import github from "../static/images/github.png";
 import "./styles.scss";
 import gql from "graphql-tag";
-import {login as loginAction} from '../actions/actionCreator';
 import {Redirect} from "react-router-dom";
-import {connect} from "react-redux";
 
 const myProfileQuery = gql`
 query MyProfile($first:Int!){
@@ -45,7 +43,7 @@ function Login({dispatch}) {
     ) : (
         <div>
             <Row type="flex" justify="center">
-                <Col align="center" span={6}>
+                <Col align="center" xs={20} sm={16} md={12} lg={8} xl={8}>
                     <img src={github} alt="" className="mb-10 img"/>
                     <Input
                         className="mb-10"

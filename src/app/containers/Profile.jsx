@@ -4,6 +4,7 @@ import {Query} from 'react-apollo';
 import FullProfile from "../components/profile/FullProfile";
 import {useParams} from "react-router-dom";
 import {connect} from "react-redux";
+import {Col, Row, Spin} from "antd";
 
 const profileQuery = gql`
 query UserProfile($login:String!){
@@ -39,7 +40,13 @@ function Profile(props) {
     return (
         <Query query={profileQuery} variables={{login: login}}>
             {({data, loading}) => {
-                if (loading) return <p>loading...</p>;
+                if (loading) return (
+                    <Row type="flex" justify="center">
+                        <Col align="center">
+                            <Spin style={{marginTop: 20}} size="large" />
+                        </Col>
+                    </Row>
+                );
                 return (
                     <FullProfile data={data.user}/>)
             }}

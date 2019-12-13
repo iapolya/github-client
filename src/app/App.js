@@ -3,7 +3,7 @@ import '../App.css';
 import 'antd/dist/antd.css';
 import {Button, PageHeader} from "antd";
 import github from "./static/images/github.png";
-import {Redirect, useHistory} from "react-router-dom";
+import {useHistory} from "react-router-dom";
 
 function App({children}) {
     let history = useHistory();

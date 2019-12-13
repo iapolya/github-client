@@ -35,7 +35,9 @@ const UserSearchResult = ({login}) => (
                                     />
                                 </Card>
                             </Link> :
-                            <Icon type="frown" className="search-spin" style={{fontSize: '40px'}} theme="twoTone"/>
+                            (login.length !== 0 &&
+                                <Icon type="frown" className="search-spin" style={{fontSize: '40px'}} theme="twoTone"/>
+                            )
                 );
             }
         }

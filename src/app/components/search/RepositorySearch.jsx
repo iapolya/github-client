@@ -35,7 +35,9 @@ const RepositorySearch = ({query}) => (
                         <Spin className="search-spin" size="large"/> :
                         data ?
                             <Repositories repositories={data.search}/> :
-                            <Icon type="frown" className="search-spin" style={{fontSize: '40px'}} theme="twoTone"/>
+                            (query.length !== 0 &&
+                                <Icon type="frown" className="search-spin" style={{fontSize: '40px'}} theme="twoTone"/>
+                            )
                 );
             }
         }

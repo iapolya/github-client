@@ -2,11 +2,19 @@ import React, {useState} from "react";
 import {Button, Col, Icon, Input, Row} from "antd";
 import github from "../static/images/github.png";
 import "./styles.scss";
+import { useLazyQuery } from '@apollo/react-hooks';
 import {Redirect} from "react-router-dom";
+import VALIDATION_QUERY from "../graphql/queries/validation";
 
 function Login() {
     let [githubToken, setGithubToken] = useState('');
     let [token] = useState(localStorage.getItem('token'));
+
+    const [getData] = useLazyQuery(VALIDATION_QUERY, {
+        onError: () => {
+            localStorage.removeItem('token');
+        }
+    });
 
     return token ? (
         <Redirect to='/search'/>
@@ -37,7 +45,7 @@ function Login() {
 
     function login() {
         localStorage.setItem('token', githubToken);
-        window.location.reload();
+        getData();
     }
 }
 

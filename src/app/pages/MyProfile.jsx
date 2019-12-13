@@ -1,42 +1,12 @@
-import gql from "graphql-tag";
 import React from "react";
 import {Query} from 'react-apollo';
-import FullProfile from "../components/profile/FullProfile"
 import {Col, Row, Spin} from "antd";
-
-const myProfileQuery = gql`
-query MyProfile($first:Int!){
-    viewer {
-        id
-        isViewer
-        viewerIsFollowing
-        name
-        login
-        avatarUrl
-        bio
-        email   
-        repositories(first: $first) {
-            edges {
-                node {
-                    id
-                    name
-                    stargazers{
-                        totalCount
-                    }
-                    owner {
-                        login
-                    }
-                    viewerHasStarred
-                    isPrivate
-                }
-            }
-        }
-    }
-}`;
+import FullProfile from "../components/profile/FullProfile";
+import {MY_PROFILE_QUERY} from "../components/graphql/queries/profile";
 
 function MyProfile() {
     return (
-        <Query query={myProfileQuery} variables={{first: 10}}>
+        <Query query={MY_PROFILE_QUERY} variables={{first: 10}}>
             {({data, loading}) => {
                 if (loading) return (
                     <Row type="flex" justify="center">

@@ -22,8 +22,7 @@ const httpLink = new HttpLink({
     uri: GITHUB_BASE_URL,
     headers: {
         authorization: `Bearer ${
-            localStorage.getItem('token')
-            }`,
+            localStorage.getItem('token')}`,
     },
 });
 

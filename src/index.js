@@ -6,29 +6,32 @@ import * as serviceWorker from './serviceWorker';
 import {BrowserRouter, Switch, Route} from 'react-router-dom';
 import {ApolloProvider} from 'react-apollo';
 import {ApolloClient} from 'apollo-client';
-import {HttpLink} from 'apollo-link-http';
 import {InMemoryCache} from 'apollo-cache-inmemory';
 import Login from "./app/pages/Login";
 import Search from "./app/pages/Search";
 import Profile from "./app/pages/Profile";
 import Repository from "./app/pages/Repository";
 import MyProfile from "./app/pages/MyProfile";
+import {createHttpLink} from 'apollo-link-http';
+import {setContext} from "apollo-link-context";
 
-const cache = new InMemoryCache();
+const httpLink = createHttpLink({
+    uri: 'https://api.github.com/graphql'
+});
 
-const GITHUB_BASE_URL = 'https://api.github.com/graphql';
-
-const httpLink = new HttpLink({
-    uri: GITHUB_BASE_URL,
-    headers: {
-        authorization: `Bearer ${
-            localStorage.getItem('token')}`,
-    },
+const authLink = setContext((_, { headers }) => {
+    const token = localStorage.getItem('token');
+    return {
+        headers: {
+            ...headers,
+            authorization: token ? `Bearer ${token}` : ''
+        }
+    }
 });
 
 const client = new ApolloClient({
-    link: httpLink,
-    cache,
+    link: authLink.concat(httpLink),
+    cache: new InMemoryCache()
 });
 
 ReactDOM.render((

@@ -3,9 +3,6 @@ import {Input, Select} from "antd";
 import "./styles.scss";
 import UserSearchResult from "../components/search/UserSearch";
 import RepositorySearch from "../components/search/RepositorySearch";
-import { useQuery } from '@apollo/react-hooks';
-import {MY_PROFILE_QUERY} from "../graphql/queries/profile";
-import {Redirect} from "react-router-dom";
 const {Option} = Select;
 
 function Search() {

@@ -9,12 +9,23 @@ import VALIDATION_QUERY from "../graphql/queries/validation";
 function Login() {
     let [githubToken, setGithubToken] = useState('');
     let [token] = useState(localStorage.getItem('token'));
+    let [error, setError] = useState(false);
 
     const [getData] = useLazyQuery(VALIDATION_QUERY, {
+        onCompleted: () => {
+            setError(false);
+            window.location.reload();
+        },
         onError: () => {
+            setError(true);
             localStorage.removeItem('token');
         }
     });
+
+    const login = () => {
+        localStorage.setItem('token', githubToken);
+        getData();
+    };
 
     return token ? (
         <Redirect to='/search'/>
@@ -42,11 +53,6 @@ function Login() {
             </Row>
         </div>
     );
-
-    function login() {
-        localStorage.setItem('token', githubToken);
-        getData();
-    }
 }
 
 export default Login;

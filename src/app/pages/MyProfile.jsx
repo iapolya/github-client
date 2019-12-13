@@ -2,7 +2,7 @@ import React from "react";
 import {Query} from 'react-apollo';
 import {Col, Row, Spin} from "antd";
 import FullProfile from "../components/profile/FullProfile";
-import {MY_PROFILE_QUERY} from "../components/graphql/queries/profile";
+import {MY_PROFILE_QUERY} from "../graphql/queries/profile";
 
 function MyProfile() {
     return (

@@ -29,7 +29,9 @@ const Star = ({id, hasStarred, stars, setStars}) => (
         {starRepository => (
             <Icon type="star" className="star-icon" onClick={event => {
                 event.preventDefault();
-                setStars(hasStarred ? --stars : ++stars);
+                if (setStars) {
+                    setStars(hasStarred ? --stars : ++stars);
+                }
                 starRepository();
             }} theme={hasStarred ? 'twoTone' : ''}/>
         )}

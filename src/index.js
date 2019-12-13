@@ -8,13 +8,11 @@ import {ApolloProvider} from 'react-apollo';
 import {ApolloClient} from 'apollo-client';
 import {HttpLink} from 'apollo-link-http';
 import {InMemoryCache} from 'apollo-cache-inmemory';
-import {Provider} from "react-redux";
-import store from './app/store';
-import Login from "./app/containers/Login";
-import Search from "./app/containers/Search";
-import Profile from "./app/containers/Profile";
-import Repository from "./app/containers/Repository";
-import MyProfile from "./app/containers/MyProfile";
+import Login from "./app/pages/Login";
+import Search from "./app/pages/Search";
+import Profile from "./app/pages/Profile";
+import Repository from "./app/pages/Repository";
+import MyProfile from "./app/pages/MyProfile";
 
 const cache = new InMemoryCache();
 
@@ -35,21 +33,19 @@ const client = new ApolloClient({
 });
 
 ReactDOM.render((
-    <Provider store={store}>
-        <ApolloProvider client={client}>
-            <BrowserRouter>
-                <App>
-                    <Switch>
-                        <Route exact path='/login' component={Login}/>
-                        <Route path='/repository/:login/:name' component={Repository} />
-                        <Route path='/profile/:login' component={Profile} />
-                        <Route path='/my-profile' component={MyProfile} />
-                        <Route path='/search' component={Search} />
-                    </Switch>
-                </App>
-            </BrowserRouter>
-        </ApolloProvider>
-    </Provider>
+    <ApolloProvider client={client}>
+        <BrowserRouter>
+            <App>
+                <Switch>
+                    <Route exact path='/login' component={Login}/>
+                    <Route path='/repository/:login/:name' component={Repository} />
+                    <Route path='/profile/:login' component={Profile} />
+                    <Route path='/my-profile' component={MyProfile} />
+                    <Route path='/search' component={Search} />
+                </Switch>
+            </App>
+        </BrowserRouter>
+    </ApolloProvider>
 ), document.getElementById('root'));
 
 serviceWorker.unregister();

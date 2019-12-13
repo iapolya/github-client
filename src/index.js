@@ -3,7 +3,7 @@ import ReactDOM from 'react-dom';
 import './index.css';
 import App from './app/App';
 import * as serviceWorker from './serviceWorker';
-import {BrowserRouter, Switch, Route} from 'react-router-dom';
+import {BrowserRouter, Switch, Route, Redirect} from 'react-router-dom';
 import {ApolloProvider} from 'react-apollo';
 import {ApolloClient} from 'apollo-client';
 import {InMemoryCache} from 'apollo-cache-inmemory';
@@ -37,6 +37,7 @@ const client = new ApolloClient({
 ReactDOM.render((
     <ApolloProvider client={client}>
         <BrowserRouter>
+            <Redirect from="/" to="/login" />
             <App>
                 <Switch>
                     <Route exact path='/login' component={Login}/>

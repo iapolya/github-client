@@ -14,6 +14,7 @@ import Login from "./app/containers/Login";
 import Search from "./app/containers/Search";
 import Profile from "./app/containers/Profile";
 import Repository from "./app/containers/Repository";
+import MyProfile from "./app/containers/MyProfile";
 
 const cache = new InMemoryCache();
 
@@ -42,6 +43,7 @@ ReactDOM.render((
                         <Route exact path='/login' component={Login}/>
                         <Route path='/repository/:login/:name' component={Repository} />
                         <Route path='/profile/:login' component={Profile} />
+                        <Route path='/my-profile' component={MyProfile} />
                         <Route path='/search' component={Search} />
                     </Switch>
                 </App>

@@ -12,6 +12,7 @@ function FullRepository(props) {
                 <span>{starsCount}</span>
             </div>
             <p>{repository.description}</p>
+            <a rel="noopener noreferrer" href={repository.url} target="_blank">Link on github</a>
         </div>
     )
 }

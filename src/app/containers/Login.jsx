@@ -2,37 +2,7 @@ import React, {useState} from "react";
 import {Button, Col, Icon, Input, Row} from "antd";
 import github from "../static/images/github.png";
 import "./styles.scss";
-import gql from "graphql-tag";
 import {Redirect} from "react-router-dom";
-
-const myProfileQuery = gql`
-query MyProfile($first:Int!){
-    viewer {
-        id
-        isViewer
-        viewerIsFollowing
-        name
-        login
-        avatarUrl
-        bio
-        email   
-        repositories(first: $first) {
-            edges {
-                node {
-                    id
-                    name
-                    stargazers{
-                        totalCount
-                    }
-                    viewerHasStarred
-                    isPrivate
-                }
-            }
-        }
-    }
-}
-`;
-
 
 function Login() {
     let [githubToken, setGithubToken] = useState('');

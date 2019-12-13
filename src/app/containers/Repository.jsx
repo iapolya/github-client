@@ -36,7 +36,6 @@ function Repository() {
                         </Col>
                     </Row>
                 );
-                console.log(data.repository);
                 return (
                     <FullRepository repository={data.repository}/>)
             }}

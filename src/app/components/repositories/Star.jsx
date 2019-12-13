@@ -24,19 +24,16 @@ mutation RemoveStar($id:ID!){
   }
 }`;
 
-const Star = ({id, hasStarred}) => (
+const Star = ({id, hasStarred, stars, setStars}) => (
     <Mutation mutation={hasStarred ? REMOVE_STAR : STAR_REPOSITORY} variables={{id}}>
         {starRepository => (
             <Icon type="star" className="star-icon" onClick={event => {
                 event.preventDefault();
+                setStars(hasStarred ? --stars : ++stars);
                 starRepository();
             }} theme={hasStarred ? 'twoTone' : ''} />
         )}
     </Mutation>
 );
-
-function clickAction(event) {
-    event.preventDefault();
-}
 
 export default Star;

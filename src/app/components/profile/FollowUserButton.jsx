@@ -26,7 +26,7 @@ mutation($id:ID!){
 const FollowUserButton = ({id, isFollowing}) => (
     <Mutation mutation={isFollowing ? UNFOLLOW_USER : FOLLOW_USER} variables={{id}}>
         {followUser => (
-            <Button shape="round" type="primary" onClick={followUser}>
+            <Button className="follow-button" shape="round" type="primary" onClick={followUser}>
                 {isFollowing ? 'Unfollow' : 'Follow'}
             </Button>
         )}

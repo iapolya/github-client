@@ -3,7 +3,6 @@ import React from "react";
 import {Query} from 'react-apollo';
 import FullProfile from "../components/profile/FullProfile";
 import {useParams} from "react-router-dom";
-import {connect} from "react-redux";
 import {Col, Row, Spin} from "antd";
 
 const profileQuery = gql`
@@ -57,9 +56,4 @@ function Profile() {
     );
 }
 
-export default connect(
-    state => ({
-        user: state.auth.user
-    })
-)
-(Profile);
+export default (Profile);

@@ -1,5 +1,5 @@
 import React from "react";
-import {Button, Col, Row, Tabs} from "antd";
+import {Button, Col, Icon, Row, Tabs} from "antd";
 import './profile.scss';
 import Repositories from "./Repositories";
 import ShortUserInfo from "./ShortUserInfo";
@@ -14,6 +14,10 @@ function FullProfile(props) {
             <Row type="flex" justify="center">
                 <Col align="center" span={20}>
                     <ShortUserInfo user={data}/>
+                    <p>{data.bio}</p>
+                    <Icon type="mail" style={{marginRight: '5px'}} />
+                    <span>{data.email}</span>
+                    <br/>
                     <FollowUserButton id={data.id} isFollowing={data.viewerIsFollowing} />
                 </Col>
             </Row>

@@ -10,7 +10,7 @@ mutation($id:ID!){
             id
             viewerIsFollowing
         }
-  }
+   }
 }`;
 
 const UNFOLLOW_USER = gql`
@@ -20,7 +20,7 @@ mutation($id:ID!){
             id
             viewerIsFollowing
         }
-  }
+   }
 }`;
 
 const FollowUserButton = ({id, isFollowing}) => (

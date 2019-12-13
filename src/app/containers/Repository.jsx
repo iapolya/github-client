@@ -6,38 +6,37 @@ import {Query} from 'react-apollo';
 import FullRepository from "../components/repositories/FullRepository";
 
 const GET_REPOSITORY = gql`
-  query Repos($login: String!, $name: String!) {
+query Repos($login: String!, $name: String!) {
     repository(owner:$login, name: $name) {
-            id
-            url
+        id
+        url
+        name
+        viewerHasStarred
+        isPrivate
+        primaryLanguage {
             name
-            viewerHasStarred
-            isPrivate
-            primaryLanguage {
-                name
-            }
-            stargazers {
-                totalCount
-            }
-            description
         }
-  }
-`;
+        stargazers {
+            totalCount
+        }
+        description
+    }
+}`;
 
 function Repository() {
     let {login, name} = useParams();
+
     return (
         <Query query={GET_REPOSITORY} variables={{login: login, name: name}}>
             {({data, loading}) => {
                 if (loading) return (
                     <Row type="flex" justify="center">
                         <Col align="center">
-                            <Spin style={{marginTop: 20}} size="large" />
+                            <Spin style={{marginTop: 20}} size="large"/>
                         </Col>
                     </Row>
                 );
-                return (
-                    <FullRepository repository={data.repository}/>)
+                return (<FullRepository repository={data.repository}/>)
             }}
         </Query>
     )

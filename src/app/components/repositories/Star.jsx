@@ -5,23 +5,23 @@ import gql from "graphql-tag";
 import './repositories.scss';
 
 const STAR_REPOSITORY = gql`
-  mutation($id: ID!) {
+mutation($id: ID!) {
     addStar(input: { starrableId: $id }) {
-      starrable {
-        id
-        viewerHasStarred
-      }
+        starrable {
+            id
+            viewerHasStarred
+        }
     }
-  }`;
+}`;
 
 const REMOVE_STAR = gql`
 mutation RemoveStar($id:ID!){
-   removeStar(input:{starrableId:$id}){
-    starrable{
-      id
-      viewerHasStarred
+    removeStar(input:{starrableId:$id}){
+        starrable{
+            id
+            viewerHasStarred
+        }
     }
-  }
 }`;
 
 const Star = ({id, hasStarred, stars, setStars}) => (
@@ -31,7 +31,7 @@ const Star = ({id, hasStarred, stars, setStars}) => (
                 event.preventDefault();
                 setStars(hasStarred ? --stars : ++stars);
                 starRepository();
-            }} theme={hasStarred ? 'twoTone' : ''} />
+            }} theme={hasStarred ? 'twoTone' : ''}/>
         )}
     </Mutation>
 );

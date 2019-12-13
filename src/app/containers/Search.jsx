@@ -14,7 +14,8 @@ function Search() {
         <div>
             <h1>SEARCH</h1>
             <div className="search-container">
-                <Input className="search-input" value={searchTerm} onChange={(event) => setSearchTerm(event.target.value)} placeholder={searchType} />
+                <Input className="search-input" value={searchTerm}
+                       onChange={(event) => setSearchTerm(event.target.value)} placeholder={searchType}/>
                 <Select
                     value={searchType}
                     onChange={value => setSearchType(value)}
@@ -26,8 +27,8 @@ function Search() {
             </div>
             {
                 searchType === 'repository' ?
-                (<RepositorySearch query={searchTerm} />):
-                (<UserSearchResult login={searchTerm} />)
+                    (<RepositorySearch query={searchTerm}/>) :
+                    (<UserSearchResult login={searchTerm}/>)
             }
         </div>
     )

@@ -33,8 +33,7 @@ query UserProfile($login:String!){
       }
     }
   }
-}
-`;
+}`;
 
 function Profile() {
     let {login} = useParams();
@@ -45,7 +44,7 @@ function Profile() {
                 if (loading) return (
                     <Row type="flex" justify="center">
                         <Col align="center">
-                            <Spin style={{marginTop: 20}} size="large" />
+                            <Spin style={{marginTop: 20}} size="large"/>
                         </Col>
                     </Row>
                 );

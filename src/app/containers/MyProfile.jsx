@@ -32,8 +32,7 @@ query MyProfile($first:Int!){
             }
         }
     }
-}
-`;
+}`;
 
 function MyProfile() {
     return (

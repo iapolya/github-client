@@ -9,7 +9,7 @@ function Login() {
     let [token] = useState(localStorage.getItem('token'));
 
     return token ? (
-        <Redirect to='/search' />
+        <Redirect to='/search'/>
     ) : (
         <div>
             <Row type="flex" justify="center">
@@ -17,7 +17,7 @@ function Login() {
                     <img src={github} alt="" className="mb-10 img"/>
                     <Input
                         className="mb-10"
-                        prefix={<Icon type="user" style={{ color: 'rgba(0,0,0,.25)' }} />}
+                        prefix={<Icon type="user" style={{color: 'rgba(0,0,0,.25)'}}/>}
                         placeholder="Token"
                         value={githubToken}
                         onChange={(event) => setGithubToken(event.target.value)}
@@ -41,4 +41,4 @@ function Login() {
     }
 }
 
-export default (Login);
+export default Login;

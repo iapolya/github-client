@@ -49,6 +49,9 @@ function Login() {
                     >
                         Log in
                     </Button>
+                    {error &&
+                        <p className="error-message">Incorrect token</p>
+                    }
                 </Col>
             </Row>
         </div>

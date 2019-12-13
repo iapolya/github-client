@@ -2,7 +2,7 @@ import React from "react";
 import gql from "graphql-tag";
 import {Query} from 'react-apollo';
 import './search.scss';
-import {Avatar, Card, Spin} from "antd";
+import {Avatar, Card, Icon, Spin} from "antd";
 import {Link} from "react-router-dom";
 
 const { Meta } = Card;
@@ -22,10 +22,10 @@ const UserSearchResult = ({login}) => (
             ({data, loading}) => {
             return (
                 loading ?
-                <Spin style={{marginTop: 20}} size="large" /> :
+                <Spin className="search-spin" size="large" /> :
                 data ?
                     <Link to={`/profile/${data.user.login}`}>
-                        <Card style={{ width: 300, marginTop: 16 }}>
+                        <Card hoverable style={{ marginTop: 20 }}>
                             <Meta
                                 avatar={
                                     <Avatar src={data.user.avatarUrl} />
@@ -34,7 +34,8 @@ const UserSearchResult = ({login}) => (
                                 description={data.user.name}
                             />
                         </Card>
-                    </Link> : <p>Nothing was found</p>
+                    </Link> :
+                    <Icon type="frown" className="search-spin" style={{ fontSize: '40px' }}  theme="twoTone" />
             );}
         }
     </Query>

@@ -2,6 +2,7 @@ import Repositories from "../profile/Repositories";
 import React from "react";
 import {Query} from 'react-apollo';
 import gql from "graphql-tag";
+import {Icon, Spin} from "antd";
 
 const GET_REPOSITORIES_OF_ORGANIZATION = gql`
   query Reps($query: String!) {
@@ -28,12 +29,15 @@ const GET_REPOSITORIES_OF_ORGANIZATION = gql`
 
 const RepositorySearch = ({query}) => (
     <Query query={GET_REPOSITORIES_OF_ORGANIZATION} variables={{query}}>
-        {({data, loading}) => {
-            console.log(data);
-            return (loading ? <div>Loading ...</div> :
-                data ? <div><Repositories repositories={data.search}/></div> :
-                    <p>Nothing was found</p>);
-        }
+        {
+            ({data, loading}) => {
+            return (
+                loading ?
+                <Spin className="search-spin" size="large" /> :
+                data ?
+                    <Repositories repositories={data.search}/> :
+                    <Icon type="frown" className="search-spin" style={{ fontSize: '40px' }}  theme="twoTone" />
+            );}
         }
     </Query>
 );

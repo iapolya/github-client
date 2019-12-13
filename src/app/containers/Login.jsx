@@ -34,7 +34,7 @@ query MyProfile($first:Int!){
 `;
 
 
-function Login({dispatch}) {
+function Login() {
     let [githubToken, setGithubToken] = useState('');
     let [token] = useState(localStorage.getItem('token'));
 

@@ -3,7 +3,7 @@
 }
 
 .mb-10 {
-    margin-bottom: 10px;
+  margin-bottom: 10px;
 }
 
 .search-container {
@@ -13,4 +13,12 @@
 .search-input {
   max-width: 50%;
   margin-right: 10px;
+}
+
+.search-select {
+  min-width: 100px;
+}
+
+.search-spin {
+  margin-top: 30px;
 }

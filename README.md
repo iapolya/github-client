@@ -1,5 +1,5 @@
 
-# [github-client] (https://serene-retreat-20422.herokuapp.com/profile/iapolly)
+# [github-client](https://serene-retreat-20422.herokuapp.com/login)
 
 > simple client for github
 
